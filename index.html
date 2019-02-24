@@ -78,17 +78,17 @@
   </div>
   <div id="wrap">
     <div class="quarter" id="controls">
-      <div class="bright">
+      <div class="container-fluid">
         <h3>What is this?</h3>
         <p>
           This visualization was made for a project in DH2321 at KTH. The main goal was to make some discovery process by using the data available on the following website : <a href="http://www.worldvaluessurvey.org/WVSOnline.jsp">http://www.worldvaluessurvey.org/WVSOnline.jsp</a>.<br/>
             <br/>
-            This website contains different surveys made in several countries. This visualization was made to understand them and find "trends".<br/>
+            This website contains different surveys made in several countries. This visualization was made to understand them and find "trends".<br/><br/>
             Here, we only focus on the trust of the citizens into several institutions : Armed Forces, Churches, Government...
         </p>
         <p>
-          The parallel coordinates displays the percentage of agreement of the citizens for different countries and different institutions.<br/>
-          Each color represent a part of the world that are supposed to have a common culture.<br/>
+          The parallel coordinates displays the percentage of agreement of the citizens for different countries and different institutions.<br/><br/>
+          Each color represent a part of the world that are supposed to have a common culture.<br/><br/>
           In order to make a simple model, the part of the world can be considered as continents.
         </p>
 
@@ -98,9 +98,19 @@
       <div class="container-fluid">
         <h3>How to use?</h3>
         <p>
-          The goal here is to make a discovery process.<br/>
-          In order to do that, you can select the data by continents or by searching the name of the country that you're interested in.<br/>
+          The goal here is to make a discovery process.<br/><br/>
+          In order to do that, you can select the data by continents or by searching the name of the country that you're interested in.<br/><br/>
           You can also brush the data by selecting the value you want for a certain institution.
+        </p>
+      </div>
+
+      <div class="container-fluid">
+        <h3>How this was made ?</h3>
+        <p>
+          In order to that, I've downloaded the data for all the possible countries of the WVS website for four different waves. I've downloaded the CSV for 8 surveys and merged them into a big one. <br/><br/>
+          I've changed the dataset by merging the labels "A great deal" and "Quite a lot" and putting them as "I trust this institution"<br/><br/>
+          I've also added a label "continent" which give you the part of the world of the different countries in order to make it easier to do discovery processes.<br/>
+          Finally, I've used the parallel coordinate visualization.
         </p>
       </div>
 
@@ -121,30 +131,97 @@
         <h3>Credits &amp; License</h3>
           <p>
           Adapted from examples by<br/>
-          <a href="http://bl.ocks.org/1341021">Mike Bostock</a> and <a href="http://bl.ocks.org/1341281">Jason Davies</a><br/>
+          <a href="http://bl.ocks.org/1341021">Mike Bostock</a> and <a href="http://bl.ocks.org/1341281">Jason Davies</a><br/><br/>
+          The different datasets used here were downloaded on :<br/> <a href="http://www.worldvaluessurvey.org/WVSOnline.jsp">http://www.worldvaluessurvey.org/WVSOnline.jsp</a>.
           </p>
         </p>
       </div>
     </div>
+
+
     <div  class="third">
 
-
+<div class="container-fluid">
     <h4>Select a part of the World :</h4>
     <p id="legend">
     </p>
     </div>
-    <div  class="third">
-
-      <!--Last rendered <strong id="render-speed"></strong> lines-->
 
     </div>
+
+
+
+    <div  class="third">
+    </div>
     <div class="third">
+      <div class="container-fluid">
     <h4>Sample of countries <span class="glyphicon glyphicon-search"></span></p> <input type="text" class="form-control" id="search" placeholder="Search for a certain country..."></input></h4>
     <p id="food-list">
     </p>
     </div>
+    </div>
   </div>
   </body>
+
+<div  class="third">
+  <div class="container-fluid">
+    <h3>Discovery process with WVS website:</h3><br/>
+    <p>
+      The goal here is to make a discovery process.<br/>
+      Since i'm interested into social issues, one can wonder if it depends on your culture and the "part of the world" where you live. In order to see that, I've decided to study the confidence of citizens towards different "institutions", for instance their Government, the Police etc.<br/>
+      <br/>
+      In order to do that, I've selected every country available for each wave of the WVS dataset.<br/>
+      Here, in order make a simple example, we will just focus into the wave of 2010-2014 for the confidence of citizens toward their Police.<br/><br/>
+      The first visualization was the following : <br/><br/>
+      <img  class="img-thumbnail" src="./pictures/table.png" width="440" height="260"><br/>
+      <br/>
+      The problem of this visualization is that the information is really messy, it's difficult to compare figures for different countries.<br/>
+      We can't see "trends". For instance, one could think that Europe will have more confidence into their Police than South America.<br/><br/>
+      That's why I've decided to switch to second type of visualization, the map visualization :<br/><br/>
+      <img  class="img-thumbnail" src="./pictures/map.png" width="440" height="260"><br/><br/>
+      Here we can clearly see trends, it seems that the countries in Africa or South America doesn't have confidence to their Police.<br/><br/>
+      The problem with this visualization is that we can only do it for one survey and one wave.<br/>
+      We could do that for each wave to see if this is a real trend or just something temporary.<br/><br/>
+      Moreover, we could do that for several surveys.<br/>
+      In order to do that, we will rather use my own visualization which seems easier.
+
+
+    </p>
+  </div>
+  </div>
+<div  class="third">
+  <div class="container-fluid">
+    <h3>Discovery process with my own visualization :</h3><br/>
+    <p>
+      The goal here is to use the same dataset but with a different visualization.<br/><br/>
+      Here, instead of using a map or a table, we will use parallel coordinate which are really usefull to visualize different variables. This could help us to look at different institutions to make more complete disvory processes.<br/>
+      <br/>
+      In order to do that, I've selected every country available for each wave of the WVS dataset, for 4 waves, from 1995 to 2014.<br/>
+      You can change the different datasets by clicking on the button with the wanted period.<br/><br/>
+      Here, in order to compare it with the WVS visualization, we will also just focus into the confidence of citizens toward their Police even if with this visualization we could do more than that.<br/>
+      Here, we brushed the countries that have best confidence into their Police for the wave 2010-2014: <br/><br/>
+      <div class="container-fluid text-center">
+      <img  class="img-thumbnail" src="./pictures/2010_2014.png" width="100" height="100"><br/><br/>
+      </div>
+      <p>
+      Here we can clearly see the countries and continents that are selected :<br/><br/>
+      <img  class="img-thumbnail" src="./pictures/countries_2010.png" width="200" height="160">
+      <img  class="img-thumbnail" src="./pictures/continents_2010.png" width="200" height="160"><br/><br/>
+      Here we can clearly see trends, there are only countries from Europe, Asia and Oceania that strongly have confidence into the Police.<br/><br/>
+      We could do that for each wave to see if this is a real trend or just something temporary.<br/>
+      Here, for instance, we did it for the wave 2005-2009 and selected only countries from Europe, Oceania and Asia :<br/><br/>
+    </p>
+      <div class="container-fluid text-center">
+      <img  class="img-thumbnail" src="./pictures/2005_2009.png" width="200" height="160"><br/><br/>
+      </div>
+      <p>
+      Here we can see that the discovery process that we have made before wasn't an absolute truth. In fact here, we can see European countries that have no trust in their police.<br/><br/>
+      Moreover, we can also see that there are still many European countries that have confidence into their Police.
+    </p>
+
+    </p>
+  </div>
+  </div>
 
   <script src="https://d3js.org/d3.v2.min.js"></script>
   <script src="underscore.js"></script>
