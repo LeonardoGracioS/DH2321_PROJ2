@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>DH 2321 : Project 2 Visualizing the World Through its Own Worldview</title>
+    <link rel="stylesheet" type="text/css" href="parallel.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+
+
+
+  </head>
+  <body>
+  <div id="header" class="container-fluid text-center">
+
+    <h1>DH 2321 : Project 2 Visualizing the World Through its Own Worldview</h1>
+    <h2>Trust of citizens to their institutions</h2>
+
+    <button title="Zoom in on selected data" class="btn btn-default" id="keep-data" disabled="disabled">Keep</button>
+    <button title="Remove selected data" class="btn btn-default" id="exclude-data" disabled="disabled">Exclude</button>
+    <button title="Export data as CSV" class="btn btn-default" id="export-data">Export</button>
+
+
+<div class="container-fluid text-center">
+        <img  class="img-thumbnail" src="./pictures/logo.jpg" alt="logo" width="120" height="60">
+        <img  class="img-circle" src="./pictures/Kth_logo.svg.png" alt="logo2" width="120" height="120">
+</div>
+
+<div >
+  <h2></h2>
+</div>
+
+    <div class="controls">
+      <strong id="rendered-count"></strong>/<strong id="selected-count"></strong><!--<strong id="data-count"></strong>-->
+      <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
+      Lines at <strong id="opacity"></strong> opacity.
+
+
+      <span class="settings">
+        <button class="btn btn-warning" id="hide-ticks">Hide Ticks</button>
+        <button class="btn btn-warning" id="show-ticks" disabled="disabled">Show Ticks</button>
+        <button class="btn btn-warning" id="dark-theme">Dark</button>
+        <button class="btn btn-warning" id="light-theme" disabled="disabled">Light</button>
+      </span>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+<div class="container-fluid text-center">
+
+<div >
+  <h2></h2>
+</div>
+
+
+<div class="btn-group btn-group-justified">
+    <form>
+      <a href="#" type="button" class="btn btn-primary btn-lg" id= "date1" name="./data/95_99/data_95_99.csv"  value="1995-1999" onclick="changeData(this.name)">1995-1999</a>
+
+      <a href="#" type="button" class="btn btn-primary btn-lg" id= "date2" name="./data/00_04/data_00_04.csv"  value="2000-2004" onclick="changeData(this.name)">2000-2004</a>
+
+      <a href="#" type="button" class="btn btn-primary btn-lg" id= "date3" name="./data/05_09/data_05_09.csv"  value="2005-2009" onclick="changeData(this.name)">2005-2009</a>
+
+      <a href="#" type="button" class="btn btn-primary btn-lg" id= "date4"  name="./data/10_14/data_10_14.csv"  value="2010-2014" onclick="changeData(this.name)">2010-2014</a>
+
+    </form>
+
+  </div>
+  </div>
+
+<h3 id="chartheader">Visualization from 2010 to 2014</h3>
+  <div id="chart">
+    <canvas id="background"></canvas>
+    <canvas id="foreground"></canvas>
+    <canvas id="highlight"></canvas>
+    <svg></svg>
+  </div>
+  <div id="wrap">
+    <div class="quarter" id="controls">
+      <div class="bright">
+        <h3>What is this?</h3>
+        <p>
+          This visualization was made for a project in DH2321 at KTH. The main goal was to make some discovery process by using the data available on the following website : <a href="http://www.worldvaluessurvey.org/WVSOnline.jsp">http://www.worldvaluessurvey.org/WVSOnline.jsp</a>.<br/>
+            <br/>
+            This website contains different surveys made in several countries. This visualization was made to understand them and find "trends".<br/>
+            Here, we only focus on the trust of the citizens into several institutions : Armed Forces, Churches, Government...
+        </p>
+        <p>
+          The parallel coordinates displays the percentage of agreement of the citizens for different countries and different institutions.<br/>
+          Each color represent a part of the world that are supposed to have a common culture.<br/>
+          In order to make a simple model, the part of the world can be considered as continents.
+        </p>
+
+
+      </div>
+
+      <div class="container-fluid">
+        <h3>How to use?</h3>
+        <p>
+          The goal here is to make a discovery process.<br/>
+          In order to do that, you can select the data by continents or by searching the name of the country that you're interested in.<br/>
+          You can also brush the data by selecting the value you want for a certain institution.
+        </p>
+      </div>
+
+      <div class="container-fluid">
+        <h3>Controls</h3>
+        <p>
+          <strong>Brush</strong>: Drag vertically along an axis.<br/>
+          <strong>Remove Brush</strong>: Tap the axis background.<br/>
+          <strong>Reorder Axes</strong>: Drag a label horizontally.<br/>
+          <strong>Invert Axis</strong>: Tap an axis label.<br/>
+          <strong>Remove Axis</strong>: Drag axis label to the left edge.<br/>
+        </p>
+        <p>
+          <a href="http://eagereyes.org/techniques/parallel-coordinate">Never heard of parallel coordinates? Read this tutorial.</a>
+        </p>
+      </div>
+      <div class="container-fluid">
+        <h3>Credits &amp; License</h3>
+          <p>
+          Adapted from examples by<br/>
+          <a href="http://bl.ocks.org/1341021">Mike Bostock</a> and <a href="http://bl.ocks.org/1341281">Jason Davies</a><br/>
+          </p>
+        </p>
+      </div>
+    </div>
+    <div  class="third">
+
+
+    <h4>Select a part of the World :</h4>
+    <p id="legend">
+    </p>
+    </div>
+    <div  class="third">
+
+      <!--Last rendered <strong id="render-speed"></strong> lines-->
+
+    </div>
+    <div class="third">
+    <h4>Sample of countries <span class="glyphicon glyphicon-search"></span></p> <input type="text" class="form-control" id="search" placeholder="Search for a certain country..."></input></h4>
+    <p id="food-list">
+    </p>
+    </div>
+  </div>
+  </body>
+
+  <script src="https://d3js.org/d3.v2.min.js"></script>
+  <script src="underscore.js"></script>
+  <script src="parallel.js"></script>
+</html>
