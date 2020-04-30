@@ -1,6 +1,6 @@
-# DH2321 Project 2
+# Data Visualization
 
-## Repository for the second project of DH2321 Information Visualization
+## Repository for a project of data visualization made for the KTH course DH2321 Information Visualization
 
 This visualization was made for a project in DH2321 at KTH. The main goal was to make some discovery process by using the data available on the following website : http://www.worldvaluessurvey.org/WVSOnline.jsp.
 
